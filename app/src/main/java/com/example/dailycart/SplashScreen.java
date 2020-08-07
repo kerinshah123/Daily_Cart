@@ -1,5 +1,6 @@
 package com.example.dailycart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -23,9 +24,9 @@ public class SplashScreen extends AppCompatActivity {
                 try
                 {
                     sleep ( 3000 );
-                    //Intent i = new Intent(getApplicationContext(),new_login. class );
-                   // startActivity(i);
-                   // finish();
+                    Intent i = new Intent(getApplicationContext(),MainActivity. class );
+                    startActivity(i);
+                    finish();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
