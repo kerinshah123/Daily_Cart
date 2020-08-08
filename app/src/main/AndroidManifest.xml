@@ -32,6 +32,10 @@
         <activity android:name=".sub_category">
 
         </activity>
+        <activity
+            android:name=".product_list"
+            android:label="Product List"
+            android:parentActivityName=".sub_category" />
     </application>
 
 </manifest>
