@@ -1,5 +1,6 @@
 package com.example.dailycart.ui.QRCode;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,12 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dailycart.R;
+import com.example.dailycart.address;
+import com.example.dailycart.qrcode_scanning;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link QRCodeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class QRCodeFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -61,6 +59,10 @@ public class QRCodeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_q_r_code, container, false);
+        View view= inflater.inflate(R.layout.fragment_q_r_code, container, false);
+        Intent i = new Intent(getActivity(), qrcode_scanning.class);
+        startActivity(i);
+
+        return view;
     }
 }
