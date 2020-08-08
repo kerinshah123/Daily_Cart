@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.dailycart.OfferDetail"
+    android:background="@drawable/background">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Offer"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="40sp"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/offer1"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="20dp"/>
+    <LinearLayout
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Name :"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/offdet_name"
+            android:layout_weight="1.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Chocolates and Candies"
+            android:textAlignment="textStart"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:gravity="start" />
+    </LinearLayout>
+    <LinearLayout
+        android:weightSum="2"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Detail : "
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/offdet_desc"
+            android:lines="3"
+            android:layout_weight="1.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="discount offers on Chocolates and Candies"
+            android:textAlignment="textStart"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:gravity="start" />
+    </LinearLayout>
+    <LinearLayout
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="From :"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/offer_stating_date"
+            android:layout_weight="1.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="07-08-2020"
+            android:textAlignment="textStart"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:gravity="start" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="To :"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/offer_ending_date"
+            android:layout_weight="1.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="25-08-2020"
+            android:textAlignment="textStart"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:gravity="start" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Code :"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/offer_code"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="start"
+            android:text="CHOCO5"
+            android:textAlignment="textStart"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Discount :"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tvoffer_discount"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="start"
+            android:text="15%"
+            android:textAlignment="textStart"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>
