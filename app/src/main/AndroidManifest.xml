@@ -31,6 +31,9 @@
         <activity android:name=".MainActivity">
 
         </activity>
+        <activity android:name=".product_details">
+
+        </activity>
         <activity android:name=".sub_category">
 
         </activity>
