@@ -1,14 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.aboutus.aboutusFragment">
+    android:background="@drawable/background"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="58dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:textSize="36sp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="483dp"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        tools:text="Daily cart is Canada's one of the largest online food and grocery store. With over 18,000 products and over a 1000 brands in our catalogue you will find everything you are looking for. Right from fresh Fruits and Vegetables, Rice and Dals, Spices and Seasonings to Packaged products, Beverages, Personal care products, Meats – we have it all. Choose from a wide range of options in every category, exclusively handpicked to help you find the best quality available at the lowest prices. Select a time slot for delivery and your order will be delivered right to your doorstep.You can pay online using your debit / credit card or by cash / sodexo on delivery. We guarantee on time delivery, and the best quality!" />
+
+</LinearLayout>
