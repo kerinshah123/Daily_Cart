@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.dailycart.ui.profile.Profilefragment"
-        android:label="@string/menu_gallery"
+        android:label="Profile"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
