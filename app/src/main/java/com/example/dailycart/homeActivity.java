@@ -56,13 +56,8 @@ public class homeActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.optioncart) {
-            setTitle("Shopping-Cart");
-            shoppingcartFragment d=new shoppingcartFragment();
-            FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.nav_host_fragment,d,"fragment");
-            transaction.commit();
-            return true;
+        if (id == R.id.logoutm) {
+            
         }
 
         return super.onOptionsItemSelected(item);

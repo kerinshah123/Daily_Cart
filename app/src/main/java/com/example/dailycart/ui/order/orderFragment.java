@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.example.dailycart.R;
 
@@ -16,6 +17,8 @@ import com.example.dailycart.R;
  * create an instance of this fragment.
  */
 public class orderFragment extends Fragment {
+
+    ListView order_fram_list;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +64,13 @@ public class orderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order, container, false);
+        View view = inflater.inflate(R.layout.fragment_order, container, false);
+
+        order_fram_list = view.findViewById(R.id.order_fram_list);
+
+        OrderAdapter orderAdapter = new OrderAdapter(getActivity().getApplicationContext());
+        order_fram_list.setAdapter(orderAdapter);
+
+        return view;
     }
 }

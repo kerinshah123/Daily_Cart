@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 
 import com.example.dailycart.R;
+import com.example.dailycart.sub_category;
 
 public class CategoryAdapter extends BaseAdapter {
 
@@ -50,12 +51,13 @@ public class CategoryAdapter extends BaseAdapter {
 
         catimage.setImageResource(cat_Image[position]);
         cattxt.setText(cat_name[position]);
+        final View finalConvertView = convertView;
         catimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(context,sub_category.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                finalConvertView.getContext().startActivity(intent);
+                Intent intent = new Intent(context, sub_category.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                finalConvertView.getContext().startActivity(intent);
             }
         });
 
