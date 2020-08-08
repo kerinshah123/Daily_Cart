@@ -5,6 +5,7 @@
     <color name="colorPrimaryDark">#2E7D32</color>
     <color name="colorAccent">#39796b</color>
     <color name="white">#fff</color>
+    <color name="black">#000</color>
     <color name="sigin">#39796b</color>
     <color name="sigup">#A9d440</color>
 </resources>
