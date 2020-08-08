@@ -49,9 +49,9 @@ public class SubcategoryAdapter extends BaseAdapter {
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Intent intent = new Intent(context,product_list.class);
-               // intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                //finalConvertView.getContext().startActivity(intent);
+                Intent intent = new Intent(context,product_list.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                finalConvertView.getContext().startActivity(intent);
             }
         });
 

@@ -1,5 +1,6 @@
 package com.example.dailycart.ui.shoppingcart;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
 
 import com.example.dailycart.R;
+import com.example.dailycart.address;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +20,8 @@ import com.example.dailycart.R;
  * create an instance of this fragment.
  */
 public class shoppingcartFragment extends Fragment {
-
+    static ListView cart_list;
+    public static Button checkout;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +66,36 @@ public class shoppingcartFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shoppingcart, container, false);
+        View view = inflater.inflate(R.layout.fragment_shoppingcart, container, false);
+
+        cart_list=view.findViewById(R.id.cart_list);
+        CartAdapter cartAdapter =new CartAdapter(getActivity());
+        cart_list.setAdapter(cartAdapter);
+
+        checkout=view.findViewById(R.id.checkout);
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(checkout.getText().toString().equals("You Dont Have any product in cart"))
+                {
+
+                }
+
+                else if(checkout.getText().toString().equals("Checkout $ 0"))
+                {
+
+                }
+                else
+                {
+                    Intent i = new Intent(getActivity(), address.class);
+                    view.getContext().startActivity(i);
+
+                }
+
+            }
+        });
+
+        return view;
     }
 }
