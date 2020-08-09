@@ -18,10 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.json.JSONObject;
-
-import java.io.InputStream;
-
 
 public class MainActivity extends AppCompatActivity {
     TextInputLayout username,regemail,regusername,regnumber,PasswordLayout,etPasswordLayout;
@@ -32,23 +28,11 @@ public class MainActivity extends AppCompatActivity {
     CheckBox loginyes;
     String namepattern="[a-zA-Z]+";
     String emailpattern="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    InputStream inputStream=null;
-    public String result=null;
-    public String resultreg=null;
-    static InputStream is = null;
-    static String json = "";
-    static JSONObject jobj = null;
-    public static boolean loggedIn = false;
-    public static final String SHARED_PREF_NAME="hello,sign in";
-    public static final String loginyes_no="userlogin";
-    public static final String User_shared ="username";
-    public static final String Email_shared="email";
     String loginskip="";
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        View view1 = findViewById(R.id.view1);
         newone = findViewById(R.id.newone);
         textlogin = findViewById(R.id.textlogin);
         textsignup = findViewById(R.id.textsignup);
@@ -58,12 +42,10 @@ public class MainActivity extends AppCompatActivity {
         login = findViewById(R.id.login);
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
-        // com.example.kerin.daily_cart.ipadd=findViewById(R.id.com.example.kerin.daily_cart.ipadd);
         number = findViewById(R.id.number);
         password = findViewById(R.id.Password);
         emaillogin = findViewById(R.id.emaillogin);
         etpassword = findViewById(R.id.etPassword);
-        //dclogo=findViewById(R.id.dclogo);
         loginyes = findViewById(R.id.loginyes);
         username = findViewById(R.id.username);
         regemail = findViewById(R.id.regemail);
@@ -81,11 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 if (emaillogin.getText().toString().equals("")) {
                     username.setError("Plz enter Number for forget password Activity");
                 } else {
-                    // fgpassword fg = new fgpassword();
-                    //fg.execute();
+
                     finish();
-                    //Intent intent=new Intent(MainActivity.this,otp.class);
-                    //startActivity(intent);
+                    Intent intent=new Intent(MainActivity.this,fgpassword.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -174,8 +155,7 @@ public class MainActivity extends AppCompatActivity {
                     number.setError("enter Valid Number");
                     number.requestFocus();
                 } else {
-                    //registration r = new registration();
-                    //r.execute();
+
                     Intent i = new Intent(getApplicationContext(),homeActivity.class);
                     startActivity(i);
                 }
@@ -228,8 +208,7 @@ public class MainActivity extends AppCompatActivity {
                     etPasswordLayout.setError("Enter you password");
                     etPasswordLayout.requestFocus();
                 } else {
-                    //loginc l = new loginc();
-                    //l.execute();
+
              Intent i = new Intent(getApplicationContext(),homeActivity.class);
             startActivity(i);
                 }

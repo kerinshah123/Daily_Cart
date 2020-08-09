@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dailycart.R;
-import com.example.dailycart.qrcode_scanning;
 
 /**
  * A simple {@link Fragment} subclass.

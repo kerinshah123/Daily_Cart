@@ -101,9 +101,6 @@ public class qrcode_scanning extends AppCompatActivity {
                     txtResult.post(new Runnable() {
                         @Override
                         public void run() {
-                            //Create vibrate
-//                            Vibrator vibrator = (Vibrator)getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-//                            vibrator.vibrate(1000);
 
                             txtResult.setText(qrcodes.valueAt(0).displayValue);
                             String scan= txtResult.getText().toString();

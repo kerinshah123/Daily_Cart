@@ -1,6 +1,7 @@
 package com.example.dailycart;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,10 +46,14 @@ public class ProductAdapter extends BaseAdapter {
         product_image.setImageResource(pro_image[position]);
         product_name.setText(pro_name[position]);
         product_rates.setText(rate[position]);
+        final View finalConvertView = convertView;
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(context, product_details.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                finalConvertView.getContext().startActivity(intent);
 
 
 
