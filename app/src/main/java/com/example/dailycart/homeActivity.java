@@ -1,5 +1,9 @@
 package com.example.dailycart;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +15,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -57,7 +62,30 @@ public class homeActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.logoutm) {
-            
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder.setTitle("Log Out");
+            builder.setMessage("Are you sure you want to LogOut?");
+            builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    Intent intentH = new Intent(homeActivity.this, MainActivity.class);
+                    startActivity(intentH);
+                    finish();
+
+                    finish();
+
+                }
+            });
+
+            builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            builder.show();
         }
 
         return super.onOptionsItemSelected(item);

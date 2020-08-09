@@ -105,20 +105,7 @@
         android:textColor="@color/colorPrimary"
         />
 
-            <Button
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="UpLoad Prescription"
-                android:textAllCaps="false"
-                android:textSize="18sp"
-                android:id="@+id/upload_prescription"
-                android:layout_margin="10dp"
-                android:layout_below="@id/show_order_details"
-                android:layout_centerInParent="true"
-                android:background="@drawable/buttoncolor"
-                android:textColor="@color/colorPrimary"
-                />
+
 
         </RelativeLayout>
 

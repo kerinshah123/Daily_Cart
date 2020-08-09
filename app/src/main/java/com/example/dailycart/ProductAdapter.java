@@ -55,8 +55,6 @@ public class ProductAdapter extends BaseAdapter {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 finalConvertView.getContext().startActivity(intent);
 
-
-
             }
         });
 

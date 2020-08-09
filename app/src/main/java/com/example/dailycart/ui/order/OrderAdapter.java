@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.dailycart.R;
@@ -43,6 +44,7 @@ public class OrderAdapter extends BaseAdapter {
         TextView product_name = convertView.findViewById(R.id.cartproductname);
         TextView product_rates = convertView.findViewById(R.id.cartproductrate);
         TextView product_quantity = convertView.findViewById(R.id.cartproductqty);
+        Button show_order_details = convertView.findViewById(R.id.show_order_details);
 
 
         product_image.setImageResource(pro_image[position]);
@@ -51,7 +53,7 @@ public class OrderAdapter extends BaseAdapter {
         product_quantity.setText(qty[position]);
 
         final View finalConvertView = convertView;
-        product_image.setOnClickListener(new View.OnClickListener() {
+        show_order_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,OrderDetailActivity.class);
