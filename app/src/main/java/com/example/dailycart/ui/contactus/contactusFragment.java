@@ -1,5 +1,6 @@
 package com.example.dailycart.ui.contactus;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dailycart.R;
+import com.example.dailycart.qrcode_scanning;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +63,12 @@ public class contactusFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contactus, container, false);
+        View view= inflater.inflate(R.layout.fragment_contactus, container, false);
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL,new String[]{"contactus@gmail.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT,"Contact Us");
+        startActivity(i);
+        return view;
     }
 }
