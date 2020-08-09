@@ -23,9 +23,6 @@ import org.json.JSONObject;
 import java.io.InputStream;
 
 
-
-
-
 public class MainActivity extends AppCompatActivity {
     TextInputLayout username,regemail,regusername,regnumber,PasswordLayout,etPasswordLayout;
     TextView textlogin,textsignup,newone,txtlogin,fpw;

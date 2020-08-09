@@ -1,6 +1,7 @@
 package com.example.dailycart.ui.order;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,17 @@ public class OrderAdapter extends BaseAdapter {
         product_name.setText(pro_name[position]);
         product_rates.setText(rate[position]);
         product_quantity.setText(qty[position]);
+
+        final View finalConvertView = convertView;
+        product_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,OrderDetailActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                finalConvertView.getContext().startActivity(intent);
+            }
+        });
+
 
 
 
