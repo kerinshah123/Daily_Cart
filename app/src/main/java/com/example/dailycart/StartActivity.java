@@ -27,7 +27,6 @@ public class StartActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent i = new Intent(getApplicationContext(),MainActivity. class );
-                i.putExtra( "name" , login .getText().toString());
                 startActivity(i);
             }
         });
@@ -36,7 +35,6 @@ public class StartActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent i = new Intent(getApplicationContext(),MainActivity. class );
-                i.putExtra( "name" , signin .getText().toString());
                 startActivity(i);
             }
         });
