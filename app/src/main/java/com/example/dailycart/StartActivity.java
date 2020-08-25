@@ -13,6 +13,7 @@ public class StartActivity extends AppCompatActivity {
     Button login , signin ;
     TextView skip ;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

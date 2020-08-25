@@ -1,5 +1,6 @@
 package com.example.dailycart;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,7 +17,20 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     String namepattern="[a-zA-Z]+";
     String emailpattern="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     String loginskip="";
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -57,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
         regnumber = findViewById(R.id.regnumber);
         etPasswordLayout = findViewById(R.id.etPasswordLayout);
         PasswordLayout = findViewById(R.id.PasswordLayout);
+
+        mAuth = FirebaseAuth.getInstance();
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         fpw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,8 +175,53 @@ public class MainActivity extends AppCompatActivity {
                     number.requestFocus();
                 } else {
 
-                    Intent i = new Intent(getApplicationContext(),homeActivity.class);
-                    startActivity(i);
+                    mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                            .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
+
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        // Create a new user with a first and last name
+                                        Map<String, Object> user1 = new HashMap<>();
+                                        user1.put("name", name.getText().toString());
+                                        user1.put("email", email.getText().toString());
+                                        user1.put("password", password.getText().toString());
+                                        user1.put("number", number.getText().toString());
+
+                                        // Add a new document with a generated ID
+                                        db.collection("users")
+                                                .add(user1)
+                                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                    @Override
+                                                    public void onSuccess(DocumentReference documentReference) {
+
+                                                        Toast.makeText(MainActivity.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
+                                                        Intent i = new Intent(getApplicationContext(),homeActivity.class);
+                                                        startActivity(i);
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+
+                                        Toast.makeText(MainActivity.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+
+                                    }
+
+                                    // ...
+                                }
+                            });
+
+
                 }
             }
         });
@@ -209,8 +273,30 @@ public class MainActivity extends AppCompatActivity {
                     etPasswordLayout.requestFocus();
                 } else {
 
-             Intent i = new Intent(getApplicationContext(),homeActivity.class);
-            startActivity(i);
+                    mAuth.signInWithEmailAndPassword(emaillogin.getText().toString(),etpassword.getText().toString())
+                            .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
+
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        Intent i = new Intent(getApplicationContext(),homeActivity.class);
+                                        startActivity(i);
+
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+
+                                        Toast.makeText(MainActivity.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+
+                                    }
+
+
+                                }
+                            });
+
+
                 }
             }
         });
