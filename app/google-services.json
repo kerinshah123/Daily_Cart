@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "116214466210",
+    "firebase_url": "https://daily-cart-575f3.firebaseio.com",
+    "project_id": "daily-cart-575f3",
+    "storage_bucket": "daily-cart-575f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116214466210:android:feb8f2f392909e1693b9fb",
+        "android_client_info": {
+          "package_name": "com.example.dailycart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116214466210-alhnjt4bn5ohlshg87u826bhogf1td2e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5XO_32L7-YYYiQcNRzj7ue_9bCRaD13o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116214466210-alhnjt4bn5ohlshg87u826bhogf1td2e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

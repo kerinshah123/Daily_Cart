@@ -45,11 +45,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/category_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/home_search"></ListView>
+            android:layout_below="@+id/home_search"/>
     </LinearLayout>
 
 </RelativeLayout>
