@@ -20,7 +20,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         sharedPreferences = getApplicationContext().getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE);
-        if(sharedPreferences.getString("user","") != ""){
+        if(sharedPreferences.getString("user","user") != "user"){
             Intent i = new Intent(getApplicationContext(),homeActivity.class);
             startActivity(i);
 
@@ -33,7 +33,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
         login =findViewById(R.id. login );
         signin =findViewById(R.id. signup );
-        skip =findViewById(R.id. skip );
+      //  skip =findViewById(R.id. skip );
 
         login .setOnClickListener( new View.OnClickListener() {
             @Override
@@ -51,14 +51,14 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        skip .setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getApplicationContext(),homeActivity. class );
-                startActivity(intent);
-            }
-        });
+//        skip .setOnClickListener( new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent(getApplicationContext(),homeActivity. class );
+//                startActivity(intent);
+//            }
+//        });
     }
 
 }

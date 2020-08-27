@@ -24,16 +24,16 @@
         android:fontFamily ="cursive"
         android:textSize ="50sp"
         />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/l1"
-        android:gravity="center"
-        android:text="skip to home page"
-        android:textColor="#fff"
-        android:textSize="15sp"
-        android:id="@+id/skip"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_above="@+id/l1"-->
+<!--        android:gravity="center"-->
+<!--        android:text="skip to home page"-->
+<!--        android:textColor="#fff"-->
+<!--        android:textSize="15sp"-->
+<!--        android:id="@+id/skip"-->
+<!--        />-->
     <LinearLayout
         android:layout_marginTop ="10dp"
         android:id ="@+id/l1"
