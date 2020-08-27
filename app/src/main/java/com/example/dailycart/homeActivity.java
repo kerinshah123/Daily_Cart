@@ -69,11 +69,13 @@ public class homeActivity extends AppCompatActivity {
             builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("PREFERENCE",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.clear();
+                    editor.commit();
 
                     Intent intentH = new Intent(homeActivity.this, MainActivity.class);
                     startActivity(intentH);
-                    finish();
-
                     finish();
 
                 }

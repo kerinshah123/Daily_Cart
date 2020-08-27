@@ -3,7 +3,9 @@ package com.example.dailycart;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -45,9 +47,11 @@ public class MainActivity extends AppCompatActivity {
     String loginskip="";
     private FirebaseAuth mAuth;
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(final Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         newone = findViewById(R.id.newone);
         textlogin = findViewById(R.id.textlogin);
         textsignup = findViewById(R.id.textsignup);
@@ -283,6 +287,13 @@ public class MainActivity extends AppCompatActivity {
                                         FirebaseUser user = mAuth.getCurrentUser();
                                         Intent i = new Intent(getApplicationContext(),homeActivity.class);
                                         startActivity(i);
+
+                                        if(loginyes.isChecked()){
+                                            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString("user", String.valueOf(user));
+                                            editor.commit();
+                                        }
 
                                     } else {
                                         // If sign in fails, display a message to the user.
