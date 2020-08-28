@@ -1,5 +1,6 @@
 package com.example.dailycart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ public class product_list extends AppCompatActivity {
     RecyclerView product_list;
     FirebaseFirestore productDB;
 
+
     FirestoreRecyclerAdapter<ProductPojo, ProductView> adapterProduct;
 
 
@@ -35,6 +37,10 @@ public class product_list extends AppCompatActivity {
 
         //ProductAdapter productAdapter =new ProductAdapter(this);
         //gridView.setAdapter(productAdapter);
+
+        Intent intent = getIntent();
+        String id = intent.getStringExtra("id").trim();
+
         product_list = findViewById(R.id.product_list);
 
         product_list.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
@@ -61,10 +67,11 @@ public class product_list extends AppCompatActivity {
                 final String id = getSnapshots().getSnapshot(position).getId();
 
                 Picasso.with(getApplicationContext())
-                        .load(model.getProduct_image())
+                        .load(R.drawable.chocolate)
+                        .placeholder(R.drawable.chocolatewalnetp)
                         .into(holder.image_product);
                 holder.product_name.setText(model.getProduct_name());
-                holder.price.setText(model.getProduct_rates());
+              //  holder.price.setText(model.getProduct_rates());
 
             }
 
@@ -79,9 +86,9 @@ public class product_list extends AppCompatActivity {
         public ProductView(@NonNull View itemView) {
             super(itemView);
 
-            image_product = itemView.findViewById(R.id.product_image);
-            product_name = itemView.findViewById(R.id.txtproduct1);
-            price = itemView.findViewById(R.id.txtproductprice);
+            image_product = itemView.findViewById(R.id.image_sub);
+            product_name = itemView.findViewById(R.id.sub_name);
+         //   price = itemView.findViewById(R.id.txtproductprice);
         }
     }
     @Override

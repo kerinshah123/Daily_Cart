@@ -3,6 +3,7 @@ package com.example.dailycart;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ public class product_details extends AppCompatActivity {
     FloatingActionButton cart;
     Button offer_apply;
     EditText offer;
+    int number = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,5 +41,24 @@ public class product_details extends AppCompatActivity {
 
         coll.setExpandedTitleTextAppearance(R.style.coll2);
         coll.setCollapsedTitleTextAppearance(R.style.coll);
+
+        imageplus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number++;
+                quantity.setText(String.valueOf(number));
+            }
+        });
+
+        imageminus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(number>=1){
+                    number--;
+                    quantity.setText(String.valueOf(number));
+                }
+
+            }
+        });
     }
 }

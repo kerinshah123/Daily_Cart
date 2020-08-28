@@ -133,7 +133,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:src="@drawable/ic_remove_black_24dp"
-                            android:visibility="invisible" />
+                            android:visibility="visible" />
 
                         <TextView
                             android:id="@+id/quantity"

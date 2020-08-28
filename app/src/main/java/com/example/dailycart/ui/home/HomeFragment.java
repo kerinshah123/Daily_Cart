@@ -1,6 +1,8 @@
 package com.example.dailycart.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +40,7 @@ public class HomeFragment extends Fragment {
     int images[] = {R.drawable.offer1,R.drawable.offer2,R.drawable.offer3,R.drawable.offer4};
 
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+                             ViewGroup container, final Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -67,7 +69,7 @@ public class HomeFragment extends Fragment {
 
         adapterCategory = new FirestoreRecyclerAdapter<CategoryPojo, CategoryView>(Cat_options) {
             @Override
-            protected void onBindViewHolder(@NonNull CategoryView holder, int position, @NonNull CategoryPojo model) {
+            protected void onBindViewHolder(@NonNull final CategoryView holder, int position, @NonNull final CategoryPojo model) {
                 final String id = getSnapshots().getSnapshot(position).getId();
 
                 Picasso.with(getActivity())
@@ -78,9 +80,12 @@ public class HomeFragment extends Fragment {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getContext(), sub_category.class);
-                        intent.putExtra("id",id);
-                        startActivity(intent);
+                        SharedPreferences sharedPreferences = getContext().getSharedPreferences("ID", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("id",id);
+                        editor.commit();
+
+                        startActivity(new Intent(getContext(),sub_category.class));
 
                     }
                 });

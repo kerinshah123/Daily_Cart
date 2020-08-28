@@ -1,6 +1,9 @@
 package com.example.dailycart;
 
+import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +28,7 @@ import com.squareup.picasso.Picasso;
 public class sub_category extends AppCompatActivity {
     RecyclerView subcategory_list;
     FirebaseFirestore SubCategoryDB;
+    String idIntent = "";
 
     @Override
     protected void onStart() {
@@ -41,6 +45,7 @@ public class sub_category extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_category);
 
+
         // gridview = findViewById(R.id.gridview);
         //SubcategoryAdapter subcategoryAdapter = new SubcategoryAdapter(getApplicationContext());
         //gridview.setAdapter(subcategoryAdapter);
@@ -51,11 +56,11 @@ public class sub_category extends AppCompatActivity {
 
         SubCategoryDB = FirebaseFirestore.getInstance();
 
-        Intent intent = getIntent();
-       String id = intent.getStringExtra("id");
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("ID", Context.MODE_PRIVATE);
+        idIntent = sharedPreferences.getString("id","").trim();
 
 
-        final Query Cat_query = SubCategoryDB.collection("product_sub_category_main").whereEqualTo("category_id",id);
+        final Query Cat_query = SubCategoryDB.collection("product_sub_category_main").whereEqualTo("category_id",idIntent.trim());
 
         FirestoreRecyclerOptions<SubCategoryPojo> Cat_options = new FirestoreRecyclerOptions.Builder<SubCategoryPojo>()
                 .setQuery(Cat_query, SubCategoryPojo.class)
@@ -74,12 +79,21 @@ public class sub_category extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull SubCategoryView holder, int position, @NonNull SubCategoryPojo model) {
                 final String id = getSnapshots().getSnapshot(position).getId();
 
-                System.out.println(id);
+                    Picasso.with(getApplicationContext())
+                            .load(model.getSub_category_image())
+                            .into(holder.image_sub);
+                    holder.sub_name.setText(model.getSub_category_name().toUpperCase());
 
-                Picasso.with(getApplicationContext())
-                        .load(model.getSub_category_image())
-                        .into(holder.image_sub);
-                holder.sub_name.setText(model.getSub_category_name().toUpperCase());
+                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent1 = new Intent(getApplicationContext(),product_list.class);
+                            intent1.putExtra("id",id);
+                            startActivity(intent1);
+                        }
+                    });
+
+
 
             }
 
