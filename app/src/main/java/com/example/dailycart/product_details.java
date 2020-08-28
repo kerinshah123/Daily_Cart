@@ -16,9 +16,12 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
@@ -28,17 +31,19 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class product_details extends AppCompatActivity {
     CollapsingToolbarLayout coll;
     ImageView productimage,imageplus,imageminus;
     TextView productname,productprice,productdescription,quantity;
-
     FloatingActionButton cart;
     Button offer_apply;
     EditText offer;
     int number = 1;
-
-    String name,description,price,image;
+    private FirebaseAuth mAuth;
+    String email;
 
 
     @Override
@@ -61,10 +66,13 @@ public class product_details extends AppCompatActivity {
         imageminus=findViewById(R.id.imageminus);
         quantity=findViewById(R.id.quantity);
 
+        mAuth = FirebaseAuth.getInstance();
+        email = mAuth.getCurrentUser().getEmail();
+
         coll.setExpandedTitleTextAppearance(R.style.coll2);
         coll.setCollapsedTitleTextAppearance(R.style.coll);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         imageplus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +94,7 @@ public class product_details extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        String id = intent.getStringExtra("id").trim();
+        final String id = intent.getStringExtra("id").trim();
 
         db.collection("products_master").document(id)
                 .get()
@@ -96,17 +104,41 @@ public class product_details extends AppCompatActivity {
                         DocumentSnapshot document = task.getResult();
                         productname.setText((CharSequence) document.get("product_name"));
                         actionBar.setTitle((CharSequence) document.get("product_name"));
-
                         productdescription.setText((CharSequence) document.get("product_description"));
                         productprice.setText((CharSequence) document.get("product_rates"));
                         Picasso.with(getApplicationContext())
-                                .load(String.valueOf(document.get("product_image")))
+                                .load(String.valueOf((CharSequence)document.get("product_image")))
                                 .placeholder(R.drawable.chocolatewalnetp)
                                 .into(productimage);
+
                     }
                 });
 
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Map<String, Object> user = new HashMap<>();
+                user.put("id", id);
+                user.put("quantity", String.valueOf(number));
+                user.put("email", email);
 
+                db.collection("shopping_cart").document(id)
+                        .set(user)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(product_details.this, "Product Added to cart", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                            }
+                        });
+
+            }
+        });
 
 
     }
