@@ -3,20 +3,14 @@ package com.example.dailycart.PojoClass;
 
 
 public class ProductPojo {
-    int product_id;
+
     String product_name;
     String product_description;
     String product_image;
     String sub_category_id;
     String product_rates;
 
-    public int getProduct_id() {
-        return product_id;
-    }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
-    }
 
     public String getProduct_name() {
         return product_name;

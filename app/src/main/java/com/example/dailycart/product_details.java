@@ -104,6 +104,7 @@ public class product_details extends AppCompatActivity {
                         DocumentSnapshot document = task.getResult();
                         productname.setText((CharSequence) document.get("product_name"));
                         actionBar.setTitle((CharSequence) document.get("product_name"));
+
                         productdescription.setText((CharSequence) document.get("product_description"));
                         productprice.setText((CharSequence) document.get("product_rates"));
                         Picasso.with(getApplicationContext())

@@ -53,7 +53,7 @@ public class qrcode_scanning extends AppCompatActivity {
         txtResult = (TextView) findViewById(R.id.txtResult);
 
         barcodeDetector = new BarcodeDetector.Builder(getApplicationContext())
-                .setBarcodeFormats(Barcode.QR_CODE)
+                .setBarcodeFormats(Barcode.DATA_MATRIX | Barcode.QR_CODE)
                 .build();
         cameraSource = new CameraSource
                 .Builder(this, barcodeDetector)

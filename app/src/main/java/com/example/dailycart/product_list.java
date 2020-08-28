@@ -42,6 +42,7 @@ public class product_list extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("SUB_ID", Context.MODE_PRIVATE);
         String idIntent = sharedPreferences.getString("id","").trim();
+        System.out.println(idIntent);
 
         product_list = findViewById(R.id.product_list);
 
@@ -49,7 +50,7 @@ public class product_list extends AppCompatActivity {
 
         productDB = FirebaseFirestore.getInstance();
 
-        final Query Cat_query = productDB.collection("products_master");
+        final Query Cat_query = productDB.collection("products_master").whereEqualTo("sub_category_id",idIntent);
 
         FirestoreRecyclerOptions<ProductPojo> Cat_options = new FirestoreRecyclerOptions.Builder<ProductPojo>()
                 .setQuery(Cat_query, ProductPojo.class)
@@ -69,10 +70,10 @@ public class product_list extends AppCompatActivity {
                 final String id = getSnapshots().getSnapshot(position).getId();
 
                 Picasso.with(getApplicationContext())
-                        .load(R.drawable.chocolate)
+                        .load(model.getProduct_image())
                         .placeholder(R.drawable.chocolatewalnetp)
                         .into(holder.image_product);
-                holder.product_name.setText(model.getProduct_name());
+                holder.product_name.setText(model.getProduct_name().toUpperCase());
               //  holder.price.setText(model.getProduct_rates());
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

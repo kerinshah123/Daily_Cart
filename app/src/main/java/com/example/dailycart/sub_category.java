@@ -89,7 +89,7 @@ public class sub_category extends AppCompatActivity {
                         public void onClick(View v) {
                             SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("SUB_ID", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("id",id);
+                            editor.putString("id",id.trim());
                             editor.commit();
 
                             startActivity(new Intent(getApplicationContext(),product_list.class));
