@@ -32,7 +32,9 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".product_details" />
+        <activity android:name=".product_details"
+            android:label="Product Details"
+            android:parentActivityName=".product_list"></activity>
         <activity android:name=".sub_category"
             android:label="Sub Category"
             android:parentActivityName=".homeActivity"

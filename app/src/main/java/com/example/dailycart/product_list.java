@@ -1,6 +1,8 @@
 package com.example.dailycart;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,8 +40,8 @@ public class product_list extends AppCompatActivity {
         //ProductAdapter productAdapter =new ProductAdapter(this);
         //gridView.setAdapter(productAdapter);
 
-        Intent intent = getIntent();
-        String id = intent.getStringExtra("id").trim();
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("SUB_ID", Context.MODE_PRIVATE);
+        String idIntent = sharedPreferences.getString("id","").trim();
 
         product_list = findViewById(R.id.product_list);
 
@@ -72,6 +74,14 @@ public class product_list extends AppCompatActivity {
                         .into(holder.image_product);
                 holder.product_name.setText(model.getProduct_name());
               //  holder.price.setText(model.getProduct_rates());
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent1 = new Intent(getApplicationContext(),product_details.class);
+                        intent1.putExtra("id",id);
+                        startActivity(intent1);
+                    }
+                });
 
             }
 
@@ -85,10 +95,9 @@ public class product_list extends AppCompatActivity {
 
         public ProductView(@NonNull View itemView) {
             super(itemView);
-
             image_product = itemView.findViewById(R.id.image_sub);
             product_name = itemView.findViewById(R.id.sub_name);
-         //   price = itemView.findViewById(R.id.txtproductprice);
+         //  price = itemView.findViewById(R.id.txtproductprice);
         }
     }
     @Override

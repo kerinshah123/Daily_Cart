@@ -87,9 +87,12 @@ public class sub_category extends AppCompatActivity {
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent1 = new Intent(getApplicationContext(),product_list.class);
-                            intent1.putExtra("id",id);
-                            startActivity(intent1);
+                            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("SUB_ID", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("id",id);
+                            editor.commit();
+
+                            startActivity(new Intent(getApplicationContext(),product_list.class));
                         }
                     });
 
