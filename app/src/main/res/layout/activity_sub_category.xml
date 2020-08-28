@@ -4,15 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".sub_category">
 
-    <GridView
-        android:id="@+id/gridview"
+<!--    <GridView-->
+<!--        android:id="@+id/gridview"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:numColumns="2"-->
+<!--        android:stretchMode="columnWidth"-->
+<!--        android:gravity="center"-->
+<!--        />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/subcategory_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="2"
-        android:stretchMode="columnWidth"
-        android:gravity="center"
-        />
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

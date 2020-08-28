@@ -1,5 +1,6 @@
 package com.example.dailycart.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dailycart.PojoClass.CategoryPojo;
 import com.example.dailycart.R;
+import com.example.dailycart.sub_category;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -72,6 +74,16 @@ public class HomeFragment extends Fragment {
                         .load(model.getCategory_image_url())
                         .into(holder.cat1);
                 holder.txtcat1.setText(model.getCategory_name());
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getContext(), sub_category.class);
+                        intent.putExtra("id",id);
+                        startActivity(intent);
+
+                    }
+                });
 
             }
 
