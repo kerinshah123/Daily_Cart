@@ -4,19 +4,23 @@
     android:layout_height="match_parent"
     tools:context=".ui.shoppingcart.shoppingcartFragment">
 
-    <ListView
+<!--    <ListView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:divider="#234326"-->
+<!--        android:dividerHeight="3dp"-->
+<!--        android:layout_above="@id/checkout"-->
+<!--        android:id="@+id/cart_list"/>-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cart_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="#234326"
-        android:dividerHeight="3dp"
-        android:layout_above="@id/checkout"
-        android:id="@+id/cart_list"/>
+        android:layout_height="match_parent" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Checkout"
+        android:text="You have no product in cart"
         android:textAllCaps="false"
         android:id="@+id/checkout"
         android:textColor="@color/white"
