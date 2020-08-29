@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Payment">
 
 
@@ -14,7 +15,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:text="Card Details"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
+            android:textColorLink="@color/white"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -26,13 +28,18 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10">
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            android:textColor="@color/white"
+            android:textColorLink="@color/white" >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nameOnCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name" />
+                android:hint="Name"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:textColorLink="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -50,7 +57,10 @@
                 android:layout_height="47dp"
                 android:ems="16"
                 android:maxLength="16"
-                android:hint="Card Number" />
+                android:textColor="@color/white"
+                android:textColorLink="@color/white"
+                android:hint="Card Number"
+                android:textColorHint="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -60,7 +70,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:text="Expiry Date"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
+            android:textColorLink="@color/white"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/numberInputLayout" />
@@ -78,6 +89,9 @@
                 android:id="@+id/expiryDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textColorLink="@color/white"
+                android:textColorHint="@color/white"
                 android:hint="MM/YYYY" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,7 +102,8 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="30dp"
             android:text="CVV"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
+            android:textColorLink="@color/white"
             android:textSize="25sp"
             app:layout_constraintStart_toEndOf="@+id/textView11"
             app:layout_constraintTop_toBottomOf="@+id/numberInputLayout" />
@@ -108,7 +123,8 @@
                 android:layout_height="wrap_content"
                 android:ems="3"
                 android:maxLength="3"
-                android:hint="123" />
+                android:hint="123"
+                android:textColorHint="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <CheckBox
@@ -119,6 +135,8 @@
             android:layout_marginTop="30dp"
             android:text="Save Card Details"
             android:textSize="25sp"
+            android:textColor="@color/white"
+            android:buttonTint="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/expiryDateLayout" />
 
@@ -126,9 +144,9 @@
         android:id="@+id/buttonPay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="228dp"
-        android:background="@drawable/buttoncolor"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="124dp"
+        android:background="@drawable/button"
         android:paddingBottom="10dp"
         android:text="Complete Order"
         android:textColor="@android:color/white"

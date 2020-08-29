@@ -52,8 +52,8 @@ public class qrcode_scanning extends AppCompatActivity {
         cameraPreview = (SurfaceView) findViewById(R.id.cameraPreview);
         txtResult = (TextView) findViewById(R.id.txtResult);
 
-        barcodeDetector = new BarcodeDetector.Builder(getApplicationContext())
-                .setBarcodeFormats(Barcode.DATA_MATRIX | Barcode.QR_CODE)
+        barcodeDetector = new BarcodeDetector.Builder(this)
+                .setBarcodeFormats(Barcode.QR_CODE)
                 .build();
         cameraSource = new CameraSource
                 .Builder(this, barcodeDetector)
@@ -101,12 +101,15 @@ public class qrcode_scanning extends AppCompatActivity {
                     txtResult.post(new Runnable() {
                         @Override
                         public void run() {
+                            //Create vibrate
+//                            Vibrator vibrator = (Vibrator)getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+//                            vibrator.vibrate(1000);
 
                             txtResult.setText(qrcodes.valueAt(0).displayValue);
                             String scan= txtResult.getText().toString();
-                            Intent intent = new Intent(getApplicationContext(),product_list.class);
-                            intent.putExtra("scan",scan);
-                            startActivity(intent);
+                            //Intent intent = new Intent(getApplicationContext(),search_activity.class);
+                            //intent.putExtra("scan",scan);
+                            //startActivity(intent);
                         }
                     });
                 }
