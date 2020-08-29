@@ -1,12 +1,20 @@
 package com.example.dailycart;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class fgpassword extends AppCompatActivity {
 
@@ -24,6 +32,31 @@ public class fgpassword extends AppCompatActivity {
 
         new_pass=findViewById(R.id.newpassword);
         con_pass=findViewById(R.id.con_password);
+
+        updatepw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(con_pass.getText().toString().trim() != ""){
+                    FirebaseAuth.getInstance().sendPasswordResetEmail(con_pass.getText().toString().trim())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(fgpassword.this, "Email Sent Successfully", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                    }
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(fgpassword.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            });
+                }
+
+            }
+        });
 
     }
 }

@@ -12,13 +12,22 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class StartActivity extends AppCompatActivity {
+    /**
+     * @param
+     */
     Button login , signin ;
     TextView skip ;
     SharedPreferences sharedPreferences;
 
+
+
+
     @Override
     protected void onStart() {
         super.onStart();
+
+        //checking for exixting user
+
         sharedPreferences = getApplicationContext().getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE);
         if(sharedPreferences.getString("user","user") != "user"){
             Intent i = new Intent(getApplicationContext(),homeActivity.class);
@@ -26,6 +35,7 @@ public class StartActivity extends AppCompatActivity {
 
         }
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +45,8 @@ public class StartActivity extends AppCompatActivity {
         signin =findViewById(R.id. signup );
       //  skip =findViewById(R.id. skip );
 
+        //go to MainActivity for login
+
         login .setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +55,9 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        //go to MainActivity for signin
+
         signin .setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,14 +66,7 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-//        skip .setOnClickListener( new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent = new Intent(getApplicationContext(),homeActivity. class );
-//                startActivity(intent);
-//            }
-//        });
+
     }
 
 }

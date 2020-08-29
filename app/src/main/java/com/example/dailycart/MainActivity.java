@@ -34,17 +34,40 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ *
+ */
 public class MainActivity extends AppCompatActivity {
-    TextInputLayout username,regemail,regusername,regnumber,PasswordLayout,etPasswordLayout;
-    TextView textlogin,textsignup,newone,txtlogin,fpw;
-    Button signup,login;
-    EditText name,email,password,number,emaillogin,etpassword;
-    LinearLayout l1,l2,open,llorder;
+    TextInputLayout username,
+    regemail,
+    regusername,
+    regnumber,
+    PasswordLayout,
+    etPasswordLayout;
+    TextView textlogin,
+    textsignup,
+    newone,
+    txtlogin,
+    fpw;
+    Button signup,
+    login;
+    EditText name,
+    email,
+    password,
+    number,
+    emaillogin,
+    etpassword;
+    LinearLayout l1,
+    l2,
+    open,
+    llorder;
     CheckBox loginyes;
+    //name pattern
     String namepattern="[a-zA-Z]+";
+    //email pattern
     String emailpattern="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     String loginskip="";
+    //Firebase authentication instance
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(final Bundle savedInstanceState){
@@ -77,20 +100,20 @@ public class MainActivity extends AppCompatActivity {
         etPasswordLayout = findViewById(R.id.etPasswordLayout);
         PasswordLayout = findViewById(R.id.PasswordLayout);
 
+
         mAuth = FirebaseAuth.getInstance();
+
+        //Firestore instance
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         fpw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (emaillogin.getText().toString().equals("")) {
-                    username.setError("Plz enter Number for forget password Activity");
-                } else {
 
-                    finish();
+
                     Intent intent=new Intent(MainActivity.this,fgpassword.class);
                     startActivity(intent);
-                }
+
             }
         });
         if (getIntent().getExtras() != null) {
