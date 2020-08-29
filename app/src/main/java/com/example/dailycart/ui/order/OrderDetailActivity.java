@@ -40,7 +40,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String id = intent.getStringExtra("id").trim();
 
-        orderid.setText(id);
+        orderid.setText("Order Id : - "+id);
 
         db = FirebaseFirestore.getInstance();
 
@@ -53,6 +53,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                         final String id = documentSnapshot.getId();
 
                         order_detail_quantity.setText((CharSequence) documentSnapshot.get("quantity"));
+                        final int quantity = Integer.parseInt(String.valueOf(documentSnapshot.get("quantity")));
                         db.collection("products_master").document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -62,7 +63,10 @@ public class OrderDetailActivity extends AppCompatActivity {
                                 System.out.println();
                                 order_detail_productrate.setText(String.valueOf((documentSnapshot.get("product_rates"))));
                                 order_detail_productname.setText(String.valueOf((documentSnapshot.get("product_name"))));
-
+                                int price = Integer.parseInt(String.valueOf((documentSnapshot.get("product_rates"))));
+                                int Final = quantity*price;
+                                String amt =" Payment Amount : - " + Final;
+                                payment_amt.setText(String.valueOf(amt));
                             }
                         });
                     }
