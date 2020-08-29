@@ -26,10 +26,10 @@
                 android:id="@+id/nav_shoppingcart"
                 android:icon="@drawable/ic_shopping_cart_black_24dp"
                 android:title="Shopping Cart" />
-            <item
-                android:id="@+id/nav_qrcode"
-                android:icon="@drawable/ic_scanner_black_24dp"
-                android:title="Find Product using QR Code" />
+<!--            <item-->
+<!--                android:id="@+id/nav_qrcode"-->
+<!--                android:icon="@drawable/ic_scanner_black_24dp"-->
+<!--                android:title="Find Product using QR Code" />-->
             <item
                 android:id="@+id/nav_feedback"
                 android:icon="@drawable/ic_feedback_black_24dp"
