@@ -1,5 +1,6 @@
 package com.example.dailycart;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -10,10 +11,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +33,8 @@ public class Payment extends AppCompatActivity {
     CheckBox checkBox;
     Button button;
     String namepattern = "[a-zA-Z]+";
+
+    String currentUser;
 
 
 
@@ -158,7 +170,7 @@ public class Payment extends AppCompatActivity {
                         //data.put("email",user);
 
                         final FirebaseFirestore db = FirebaseFirestore.getInstance();
-                        db.collection("card").document().set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        db.collection("Payment").document().set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(Payment.this, "Card Details Saved", Toast.LENGTH_LONG).show();
@@ -166,9 +178,39 @@ public class Payment extends AppCompatActivity {
                             }
                         });
 
-
                     }
-                    Intent intent = new Intent(getApplicationContext(), Confirmation.class);
+
+
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if (user != null) {
+                        // email
+                        currentUser = user.getEmail();
+                        // FirebaseUser.getIdToken() instead.
+                        String uid = user.getUid();
+                    }
+                    final Map<String, Object> data1 = new HashMap<>();
+                    data1.put("status", "order");
+
+                    final FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                    db.collection("shopping_cart")
+                            .whereEqualTo("email",currentUser)
+                            .whereEqualTo("status","cart")
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    String userId = null;
+                                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                                        userId = documentSnapshot.getId();
+                                        db.collection("shopping_cart")
+                                                .document(userId)
+                                                .set(data1, SetOptions.merge());
+                                    }
+                                }
+                            });
+
+                    Intent intent = new Intent(getApplicationContext(), homeActivity.class);
                     startActivity(intent);
 
                 }

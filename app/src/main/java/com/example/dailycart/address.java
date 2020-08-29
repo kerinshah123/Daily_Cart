@@ -85,7 +85,6 @@ public class address extends AppCompatActivity {
         }
 
 
-
         grp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -154,6 +153,7 @@ public class address extends AppCompatActivity {
                                 public void onSuccess(DocumentReference documentReference) {
 
                                     Toast.makeText(getApplicationContext(), "Successfully Added", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(), Payment.class));
 //
                                 }
                             })
@@ -164,6 +164,7 @@ public class address extends AppCompatActivity {
                                 }
                             });
                 }
+                startActivity(new Intent(getApplicationContext(), Payment.class));
 
 
             }
@@ -173,21 +174,15 @@ public class address extends AppCompatActivity {
 
                 if (address1.getText().toString().length() <= 0) {
                     nameLayout.setError("Please Enter Name");
-                }
-                else if(address2.getText().toString().length() <= 0) {
+                } else if (address2.getText().toString().length() <= 0) {
                     addressLayout.setError("Please Enter Andress");
-                }
-               else if (pincodeedit.getText().toString().length() <= 0) {
+                } else if (pincodeedit.getText().toString().length() <= 0) {
                     codeLayout.setError("Please Enter Code");
-                }
-
-               else if (address3.getText().toString().length() <= 0) {
+                } else if (address3.getText().toString().length() <= 0) {
                     cityLayout.setError("Please Enter City");
-                }
-
-               else if(address_type.equals(null)){
+                } else if (address_type.equals(null)) {
                     Toast.makeText(address.this, "Please Select", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     name = address1.getText().toString().trim();
                     address = address2.getText().toString().trim();
                     city_address = address3.getText().toString().trim();

@@ -110,7 +110,9 @@ public class shoppingcartFragment extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
-        final Query Cat_query = CartDB.collection("shopping_cart").whereEqualTo("email",FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        final Query Cat_query = CartDB.collection("shopping_cart")
+                .whereEqualTo("email",FirebaseAuth.getInstance().getCurrentUser().getEmail())
+                .whereEqualTo("status","cart");
 
         FirestoreRecyclerOptions<CartPojo> Cat_options = new FirestoreRecyclerOptions.Builder<CartPojo>()
                 .setQuery(Cat_query, CartPojo.class)
@@ -155,6 +157,7 @@ public class shoppingcartFragment extends Fragment {
                                         .load(String.valueOf(documentSnapshot.get("product_image")))
                                         .into(holder.cart1);
                                 System.out.println();
+
                                 holder.price.setText(String.valueOf((documentSnapshot.get("product_rates"))));
                                 holder.txtcart1.setText(String.valueOf((documentSnapshot.get("product_name"))));
 

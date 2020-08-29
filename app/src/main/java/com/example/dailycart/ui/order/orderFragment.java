@@ -2,14 +2,28 @@ package com.example.dailycart.ui.order;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.dailycart.R;
+import com.example.dailycart.ui.shoppingcart.CartPojo;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +32,11 @@ import com.example.dailycart.R;
  */
 public class orderFragment extends Fragment {
 
-    ListView order_fram_list;
+    RecyclerView order_fram_list;
+    FirebaseFirestore OrderDb;
+    FirebaseFirestore db;
+
+    FirestoreRecyclerAdapter<CartPojo,Orderview> adapterorder;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,11 +84,80 @@ public class orderFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_order, container, false);
 
-        order_fram_list = view.findViewById(R.id.order_fram_list);
+        db = FirebaseFirestore.getInstance();
 
-        OrderAdapter orderAdapter = new OrderAdapter(getActivity().getApplicationContext());
-        order_fram_list.setAdapter(orderAdapter);
+        order_fram_list = view.findViewById(R.id.order_fram_list);
+        order_fram_list.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+
+        OrderDb = FirebaseFirestore.getInstance();
+
+        final Query Cart_query = OrderDb.collection("shopping_cart")
+                .whereEqualTo("email", FirebaseAuth.getInstance().getCurrentUser().getEmail())
+                .whereEqualTo("status", "order");
+
+        FirestoreRecyclerOptions<CartPojo> Cart_options = new FirestoreRecyclerOptions.Builder<CartPojo>()
+                .setQuery(Cart_query, CartPojo.class)
+                .build();
+
+        adapterorder = new FirestoreRecyclerAdapter<CartPojo, Orderview>(Cart_options) {
+            @Override
+            protected void onBindViewHolder(@NonNull final Orderview holder, int position, @NonNull final CartPojo model) {
+                holder.cartproductqty.setText(model.getQuantity());
+                final String idmain = getSnapshots().getSnapshot(position).getId();
+                final String id = model.getId();
+
+                db.collection("products_master").document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        Picasso.with(getActivity())
+                                .load(String.valueOf(documentSnapshot.get("product_image")))
+                                .into(holder.cart_image);
+                        System.out.println();
+                        holder.cartproductrate.setText(String.valueOf((documentSnapshot.get("product_rates"))));
+                        holder.cartproductname.setText(String.valueOf((documentSnapshot.get("product_name"))));
+
+                    }
+                });
+            }
+
+            @NonNull
+            @Override
+            public Orderview onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_custom,parent,false);
+                return new Orderview(view);
+            }
+        };
+
+        order_fram_list.setAdapter(adapterorder);
+
+//        OrderAdapter orderAdapter = new OrderAdapter(getActivity().getApplicationContext());
+//        order_fram_list.setAdapter(orderAdapter);
 
         return view;
+    }
+
+    private class Orderview extends RecyclerView.ViewHolder {
+
+        ImageView cart_image;
+        TextView cartproductname,cartproductrate,cartproductqty;
+        Button show_order_details;
+
+        public Orderview(@NonNull View itemView) {
+            super(itemView);
+
+            cart_image = itemView.findViewById(R.id.cart_image);
+            cartproductname = itemView.findViewById(R.id.cartproductname);
+            cartproductrate = itemView.findViewById(R.id.cartproductrate);
+            cartproductqty = itemView.findViewById(R.id.cartproductqty);
+            show_order_details = itemView.findViewById(R.id.show_order_details);
+        }
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapterorder.startListening();
+
     }
 }

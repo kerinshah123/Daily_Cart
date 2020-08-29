@@ -122,6 +122,7 @@ public class product_details extends AppCompatActivity {
                 user.put("id", id);
                 user.put("quantity", String.valueOf(number));
                 user.put("email", email);
+                user.put("status", "cart");
 
                 db.collection("shopping_cart").document(id)
                         .set(user)
