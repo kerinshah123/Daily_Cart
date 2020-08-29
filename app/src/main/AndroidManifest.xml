@@ -16,17 +16,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.order.OrderDetailActivity"></activity>
+        <activity android:name=".Payment"></activity>
+        <activity android:name=".ui.order.OrderDetailActivity" />
         <activity
             android:name=".homeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".address"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -35,34 +33,27 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".product_details"
             android:label="Product Details"
-            android:parentActivityName=".product_list"></activity>
+            android:parentActivityName=".product_list" />
         <activity
             android:name=".sub_category"
             android:label="Sub Category"
-            android:parentActivityName=".homeActivity">
-
-        </activity>
+            android:parentActivityName=".homeActivity"></activity>
         <activity
             android:name=".product_list"
             android:label="Product List"
-            android:parentActivityName=".sub_category">
-
-        </activity>
+            android:parentActivityName=".sub_category"></activity>
         <activity
             android:name=".StartActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".qrcode_scanning" />
         <activity android:name=".fgpassword" />
-
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
-
 
 </manifest>
