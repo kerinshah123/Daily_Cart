@@ -1,5 +1,8 @@
 package com.example.dailycart.ui.shoppingcart;
-
+/**
+ *
+ * @author Harsh  Shah
+ */
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,29 +14,60 @@ import android.widget.TextView;
 
 import com.example.dailycart.R;
 
+/**
+ * To see the cart details cartAdapter class is created
+ */
 
 public class CartAdapter extends BaseAdapter {
 
     Context context;
 
+    /**
+     *
+     * @param context
+     * cartAdapter constructor to get the context
+     */
     public CartAdapter(Context context) {
         this.context = context;
     }
+
+    /**
+     *
+     * @return
+     * getcount to take the imagelength
+     */
     @Override
     public int getCount() {
         return pro_image.length;
     }
 
+    /**
+     *
+     * @param i
+     * @return
+     */
     @Override
     public Object getItem(int i) {
         return pro_image[i];
     }
 
+    /**
+     *
+     * @param i
+     * @return
+     */
     @Override
     public long getItemId(int i) {
         return pro_image[i];
     }
 
+    /**
+     *
+     * @param i
+     * @param view
+     * @param viewGroup
+     * @return
+     */
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
@@ -49,6 +83,10 @@ public class CartAdapter extends BaseAdapter {
         Button cartproductdelete = view.findViewById(R.id.cartproductdelete);
 
         cartproductdelete.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
 

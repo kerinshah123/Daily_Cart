@@ -1,5 +1,8 @@
 package com.example.dailycart;
-
+/**
+ *
+ * @author Keyur  Mistry
+ */
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +37,9 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * product_details class show detailed information about products
+ */
 public class product_details extends AppCompatActivity {
     CollapsingToolbarLayout coll;
     ImageView productimage,imageplus,imageminus;
@@ -45,7 +51,10 @@ public class product_details extends AppCompatActivity {
     private FirebaseAuth mAuth;
     String email;
 
-
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +84,10 @@ public class product_details extends AppCompatActivity {
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         imageplus.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param v
+             */
             @Override
             public void onClick(View v) {
                 number++;
@@ -83,7 +96,12 @@ public class product_details extends AppCompatActivity {
         });
 
         imageminus.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param v
+             */
             @Override
+
             public void onClick(View v) {
                 if(number>=1){
                     number--;
@@ -116,6 +134,10 @@ public class product_details extends AppCompatActivity {
                 });
 
         cart.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param v
+             */
             @Override
             public void onClick(View v) {
                 Map<String, Object> user = new HashMap<>();
@@ -127,12 +149,20 @@ public class product_details extends AppCompatActivity {
                 db.collection("shopping_cart").document(id)
                         .set(user)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            /**
+                             *
+                             * @param aVoid
+                             */
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(product_details.this, "Product Added to cart", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
+                            /**
+                             *
+                             * @param e
+                             */
                             @Override
                             public void onFailure(@NonNull Exception e) {
 

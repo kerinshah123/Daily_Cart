@@ -1,5 +1,8 @@
 package com.example.dailycart;
-
+/**
+ *
+ * @author Harsh  Shah
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,9 +29,15 @@ public class product_list extends AppCompatActivity {
     RecyclerView product_list;
     FirebaseFirestore productDB;
 
-
+    /**
+     * Creating firestore recycler view to saw the products from firestore to recyclerview
+     */
     FirestoreRecyclerAdapter<ProductPojo, ProductView> adapterProduct;
 
+    /**
+     * *
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +67,12 @@ public class product_list extends AppCompatActivity {
 
 
         adapterProduct = new FirestoreRecyclerAdapter<ProductPojo, ProductView>(Cat_options) {
+            /**
+             *
+             * @param parent
+             * @param viewType
+             * @return
+             */
             @NonNull
             @Override
             public ProductView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -65,6 +80,13 @@ public class product_list extends AppCompatActivity {
                 return new ProductView(view);
             }
 
+            /**
+             *
+             * @param holder
+             * @param position
+             * @param model
+             * creating onBindviewholder method
+             */
             @Override
             protected void onBindViewHolder(@NonNull ProductView holder, int position, @NonNull ProductPojo model) {
                 final String id = getSnapshots().getSnapshot(position).getId();
@@ -76,6 +98,11 @@ public class product_list extends AppCompatActivity {
                 holder.product_name.setText(model.getProduct_name().toUpperCase());
               //  holder.price.setText(model.getProduct_rates());
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    /**
+                     *
+                     * @param v
+                     * onlcik method to set the click event on the product
+                     */
                     @Override
                     public void onClick(View v) {
                         Intent intent1 = new Intent(getApplicationContext(),product_details.class);
@@ -89,11 +116,17 @@ public class product_list extends AppCompatActivity {
         };
         product_list.setAdapter(adapterProduct);
     }
+
+    /**
+     * productview class to view the product
+     */
     private class ProductView extends RecyclerView.ViewHolder {
 
         ImageView image_product;
         TextView product_name,price;
-
+        /**
+         * product view constructor to fetch image and name of the product
+         */
         public ProductView(@NonNull View itemView) {
             super(itemView);
             image_product = itemView.findViewById(R.id.image_sub);
@@ -101,6 +134,10 @@ public class product_list extends AppCompatActivity {
          //  price = itemView.findViewById(R.id.txtproductprice);
         }
     }
+
+    /**
+     *  onstart metghod to load apapter while loading the activity
+     */
     @Override
     public void onStart() {
         super.onStart();

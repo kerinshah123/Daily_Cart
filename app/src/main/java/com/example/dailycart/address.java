@@ -1,5 +1,10 @@
 package com.example.dailycart;
 
+/**
+ *
+ * @author Keyur  Mistry
+ */
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,6 +37,9 @@ import com.google.firebase.firestore.SetOptions;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * address class for storing the address of the user
+ */
 public class address extends AppCompatActivity {
     Button add, addaddress;
     RelativeLayout add_address;
@@ -45,6 +53,10 @@ public class address extends AppCompatActivity {
     String name, address, postal_code, city_address, address_type = "Home";
     CheckBox checkBox;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,6 +161,10 @@ public class address extends AppCompatActivity {
                     db.collection("address")
                             .add(userMap)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                /**
+                                 *
+                                 * @param documentReference
+                                 */
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
 
@@ -158,6 +174,10 @@ public class address extends AppCompatActivity {
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
+                                /**
+                                 *
+                                 * @param e
+                                 */
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -169,6 +189,9 @@ public class address extends AppCompatActivity {
 
             }
 
+            /**
+             * Creating method getdata to take the data from the user
+             */
             private void getData() {
 
 

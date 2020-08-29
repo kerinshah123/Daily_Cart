@@ -1,5 +1,8 @@
 package com.example.dailycart;
-
+/**
+ *
+ * @author Harsh  Shah
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;

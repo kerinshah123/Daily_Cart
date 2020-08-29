@@ -1,5 +1,8 @@
 package com.example.dailycart.ui.home;
-
+/**
+ *
+ * @author Kerin Shah
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;

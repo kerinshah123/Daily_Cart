@@ -1,5 +1,8 @@
 package com.example.dailycart;
-
+/**
+ *
+ * @author Amandeep  Kaur
+ */
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,7 +38,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * mainactvity class for lofin and signup of the application
  */
 public class MainActivity extends AppCompatActivity {
     TextInputLayout username,
@@ -69,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
     String loginskip="";
     //Firebase authentication instance
     private FirebaseAuth mAuth;
+
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(final Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -107,6 +115,10 @@ public class MainActivity extends AppCompatActivity {
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         fpw.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
 
@@ -147,6 +159,10 @@ public class MainActivity extends AppCompatActivity {
             l1.setVisibility(View.GONE);
         }
         textsignup.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 textlogin.setAlpha((float) 0.7);
@@ -162,6 +178,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         textlogin.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 textlogin.setAlpha(1);
@@ -177,6 +197,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         signup.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 if (password.getText().toString().trim().length() < 6) {
@@ -204,6 +228,10 @@ public class MainActivity extends AppCompatActivity {
 
                     mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                             .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                /**
+                                 *
+                                 * @param task
+                                 */
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
@@ -253,14 +281,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         name.addTextChangedListener(new TextWatcher() {
+            /**
+             *
+             * @param charSequence
+             * @param i
+             * @param i1
+             * @param i2
+             */
+
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
+            /**
+             *
+             * @param charSequence
+             * @param i
+             * @param i1
+             * @param i2
+             */
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
+            /**
+             *
+             * @param editable
+             */
             @Override
             public void afterTextChanged(Editable editable) {
                 if (name.getText().toString().matches(namepattern) && editable.length() > 0) {
@@ -271,14 +318,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         email.addTextChangedListener(new TextWatcher() {
+            /**
+             *
+             * @param charSequence
+             * @param i
+             * @param i1
+             * @param i2
+             */
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
+            /**
+             *
+             * @param charSequence
+             * @param i
+             * @param i1
+             * @param i2
+             */
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
+            /**
+             *
+             * @param editable
+             */
             @Override
             public void afterTextChanged(Editable editable) {
                 if (email.getText().toString().matches(emailpattern) && editable.length() > 0) {
@@ -302,6 +367,10 @@ public class MainActivity extends AppCompatActivity {
 
                     mAuth.signInWithEmailAndPassword(emaillogin.getText().toString(),etpassword.getText().toString())
                             .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                /**
+                                 *
+                                 * @param task
+                                 */
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {

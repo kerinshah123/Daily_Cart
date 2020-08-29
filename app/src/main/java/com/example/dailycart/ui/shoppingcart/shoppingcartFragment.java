@@ -1,5 +1,8 @@
 package com.example.dailycart.ui.shoppingcart;
-
+/**
+ *
+ * @author Harsh  Shah
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;

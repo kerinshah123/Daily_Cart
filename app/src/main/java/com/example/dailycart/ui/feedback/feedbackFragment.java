@@ -1,5 +1,8 @@
 package com.example.dailycart.ui.feedback;
-
+/**
+ *
+ * @author Amandeep kaur
+ */
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -70,6 +73,10 @@ public class feedbackFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +86,13 @@ public class feedbackFragment extends Fragment {
         }
     }
 
+    /**
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -92,6 +106,10 @@ public class feedbackFragment extends Fragment {
         feedbackdb = FirebaseFirestore.getInstance();
 
         submit.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param v
+             */
             @Override
             public void onClick(View v) {
 

@@ -1,5 +1,8 @@
 package com.example.dailycart;
-
+/**
+ *
+ * @author Arshdeep  Kaur
+ */
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +30,9 @@ import com.google.firebase.firestore.SetOptions;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * payment class for take the payment details of the customer on buying products
+ */
 public class Payment extends AppCompatActivity {
     TextInputEditText name,number,dateExpiry,cvv;
     TextInputLayout nameLayout,numberLayout,dateLayout,cvvLayout;
@@ -36,8 +42,10 @@ public class Payment extends AppCompatActivity {
 
     String currentUser;
 
-
-
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,16 +66,34 @@ public class Payment extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
 
         name.addTextChangedListener(new TextWatcher() {
+            /**
+             *
+             * @param s
+             * @param start
+             * @param count
+             * @param after
+             */
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
+            /**
+             *
+             * @param s
+             * @param start
+             * @param before
+             * @param count
+             */
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
 
+            /**
+             *
+             * @param s
+             */
             @Override
             public void afterTextChanged(Editable s) {
                 if (name.getText().toString().matches(namepattern) && s.length() > 0) {
@@ -79,16 +105,34 @@ public class Payment extends AppCompatActivity {
             }
         });
         number.addTextChangedListener(new TextWatcher() {
+            /**
+             *
+             * @param s
+             * @param start
+             * @param count
+             * @param after
+             */
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
+            /**
+             *
+             * @param s
+             * @param start
+             * @param before
+             * @param count
+             */
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
 
+            /**
+             *
+             * @param s
+             */
             @Override
             public void afterTextChanged(Editable s) {
                 if(number.getText().toString().trim().length() < 16)
@@ -104,11 +148,22 @@ public class Payment extends AppCompatActivity {
 
             }
 
+            /**
+             *
+             * @param s
+             * @param start
+             * @param before
+             * @param count
+             */
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
 
+            /**
+             *
+             * @param s
+             */
             @Override
             public void afterTextChanged(Editable s) {
                 if(dateExpiry.getText().toString().trim().length() < 7)
@@ -118,16 +173,34 @@ public class Payment extends AppCompatActivity {
             }
         });
         cvv.addTextChangedListener(new TextWatcher() {
+            /**
+             *
+             * @param s
+             * @param start
+             * @param count
+             * @param after
+             */
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
+            /**
+             *
+             * @param s
+             * @param start
+             * @param before
+             * @param count
+             */
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
 
+            /**
+             *
+             * @param s
+             */
             @Override
             public void afterTextChanged(Editable s) {
                 if(cvv.getText().toString().trim().length() < 3)
@@ -142,6 +215,10 @@ public class Payment extends AppCompatActivity {
 
 
         button.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param v
+             */
             @Override
             public void onClick(View v) {
 
@@ -171,6 +248,10 @@ public class Payment extends AppCompatActivity {
 
                         final FirebaseFirestore db = FirebaseFirestore.getInstance();
                         db.collection("Payment").document().set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            /**
+                             *
+                             * @param aVoid
+                             */
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(Payment.this, "Card Details Saved", Toast.LENGTH_LONG).show();
@@ -198,6 +279,10 @@ public class Payment extends AppCompatActivity {
                             .whereEqualTo("status","cart")
                             .get()
                             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                /**
+                                 *
+                                 * @param task
+                                 */
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     String userId = null;
@@ -221,6 +306,10 @@ public class Payment extends AppCompatActivity {
 
         });
     }
+
+    /**
+     * onstart method starts with activity loading
+     */
     @Override
     public void onStart() {
         super.onStart();

@@ -1,5 +1,8 @@
 package com.example.dailycart;
-
+/**
+ *
+ * @author Keyur  Mistry
+ */
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,6 +11,9 @@ import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * order class to take the order details of the customer
+ */
 public class order extends AppCompatActivity {
     ListView order_cart_detail;
     Button con_ord;
@@ -15,6 +21,10 @@ public class order extends AppCompatActivity {
     TextView add_line_1,add_line_2,add_line_3,pincode_edit,area,city,state;
     DatePicker date;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

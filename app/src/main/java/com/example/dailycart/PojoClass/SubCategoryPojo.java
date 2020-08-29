@@ -1,5 +1,8 @@
 package com.example.dailycart.PojoClass;
-
+/**
+ *
+ * @author Harsh  Shah
+ */
 public class SubCategoryPojo {
 
     public String getSub_category_image() {

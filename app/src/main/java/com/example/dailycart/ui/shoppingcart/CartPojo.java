@@ -1,5 +1,8 @@
 package com.example.dailycart.ui.shoppingcart;
-
+/**
+ *
+ * @author Harsh  Shah
+ */
 public class CartPojo {
     String id;
 

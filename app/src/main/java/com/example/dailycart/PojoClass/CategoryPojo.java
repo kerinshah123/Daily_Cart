@@ -1,5 +1,8 @@
 package com.example.dailycart.PojoClass;
-
+/**
+ *
+ * @author Kerin  Shah
+ */
 public class CategoryPojo {
 
     String category_image_url;

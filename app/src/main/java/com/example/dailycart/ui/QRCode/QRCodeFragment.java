@@ -1,5 +1,8 @@
 package com.example.dailycart.ui.QRCode;
-
+/**
+ *
+ * @author Harsh  Shah
+ */
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -46,6 +49,10 @@ public class QRCodeFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +62,13 @@ public class QRCodeFragment extends Fragment {
         }
     }
 
+    /**
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

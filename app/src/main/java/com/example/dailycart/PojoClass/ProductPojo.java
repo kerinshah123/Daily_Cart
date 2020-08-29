@@ -1,6 +1,9 @@
 package com.example.dailycart.PojoClass;
 
-
+/**
+ *
+ * @author Harsh  Shah
+ */
 
 public class ProductPojo {
 

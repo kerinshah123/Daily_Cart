@@ -1,5 +1,8 @@
 package com.example.dailycart;
-
+/**
+ *
+ * @author Harsh  Shah
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -11,6 +14,9 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 
+/**
+ * product adpater class used to load products
+ */
 public class ProductAdapter extends BaseAdapter {
 
     Context context;
