@@ -9,6 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
+
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,15 +22,19 @@ public class SplashScreen extends AppCompatActivity {
                 WindowManager.LayoutParams. FLAG_FULLSCREEN );
         setContentView(R.layout.activity_splashscreen);
 
+
+        //running thread for 3 second and forward to StartActivity
         Thread myThread = new Thread()
         {
+
             @Override
             public void run() {
                 try
                 {
+
                     sleep ( 3000 );
                     Intent i = new Intent(getApplicationContext(),StartActivity.class );
-                    startActivity(i);
+                      startActivity(i);
                     finish();
                 } catch (InterruptedException e) {
                     e.printStackTrace();

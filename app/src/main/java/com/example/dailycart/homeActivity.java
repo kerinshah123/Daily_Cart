@@ -13,6 +13,7 @@ import com.example.dailycart.ui.shoppingcart.shoppingcartFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -26,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class homeActivity extends AppCompatActivity {
+    private FirebaseAuth mAuth;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -35,6 +37,8 @@ public class homeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mAuth = FirebaseAuth.getInstance();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -73,6 +77,8 @@ public class homeActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.clear();
                     editor.commit();
+
+                    mAuth.signOut();
 
                     Intent intentH = new Intent(homeActivity.this, MainActivity.class);
                     startActivity(intentH);
