@@ -152,7 +152,8 @@ public class shoppingcartFragment extends Fragment {
 
 
                 //Toast.makeText(getActivity(), ""+id, Toast.LENGTH_SHORT).show();
-                db.collection("products_master").document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                db.collection("products_master").document(id).get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                 checkout.setText("Checkout");

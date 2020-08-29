@@ -83,7 +83,7 @@
                     <ImageView
                         android:layout_width="15dp"
                         android:layout_height="15dp"
-                        android:src="@drawable/rupee"
+                        android:src="@drawable/dollar"
                         android:layout_toRightOf="@id/pro_rate1"
                         android:layout_marginTop="70dp"
                         android:layout_marginLeft="10dp"
@@ -129,22 +129,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Payment Method :  "
-                        android:textColor="@color/black"
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/payment_method"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Cash Payment"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="3dp"
-                        android:layout_toRightOf="@+id/payment_method"
-                        android:id="@+id/txtpayment_method"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -153,7 +137,6 @@
                         android:layout_marginTop="10dp"
                         android:id="@+id/payment_status"
                         android:textColor="@color/black"
-                        android:layout_below="@id/txtpayment_method"
                         android:textStyle="bold"/>
 
                     <TextView
@@ -164,7 +147,7 @@
                         android:id="@+id/txtpayment_status"
                         android:layout_marginLeft="9dp"
                         android:layout_toRightOf="@+id/payment_status"
-                        android:layout_below="@id/txtpayment_method"/>
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -196,121 +179,8 @@
                         android:layout_marginTop="10dp"
                         android:textStyle="bold"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" 40"
-                        android:layout_toRightOf="@id/payment_amt"
-                        android:id="@+id/txtpayment_amt"
-                        android:layout_marginLeft="1dp"
-                        android:layout_below="@id/txtpayment_date"
-                        android:layout_marginTop="10dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Order Date :  "
-                        android:textColor="@color/black"
-                        android:id="@+id/order_date"
-                        android:layout_below="@id/payment_amt"
-                        android:layout_marginTop="10dp"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2020/08/02 "
-                        android:layout_toRightOf="@id/payment_amt"
-                        android:id="@+id/order_date_data"
-                        android:layout_below="@id/txtpayment_amt"
-                        android:layout_marginTop="10dp" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:id="@+id/rrll"
-                    >
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Shipping Address"
-                        android:textStyle="bold"
-                        android:textSize="18dp"
-                        android:textColor="@color/black"
-                        />
 
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="4752 Avenue de Courtrai"
-                            android:id="@+id/show_add_line_1"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_toRightOf="@id/show_add_line_1"
-                            android:text=","
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Appartment No: 24"
-                            android:layout_below="@id/show_add_line_1"
-                            android:id="@+id/show_add_line_2"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/show_add_line_1"
-                            android:layout_toRightOf="@id/show_add_line_2"
-                            android:text=","
-                            />
-                    </RelativeLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginTop="85dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Montreal"
-                                android:id="@+id/show_city_edit"
-                                />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Quebec"
-                            android:id="@+id/show_state_edit"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/show_pincode_edit"
-                            android:text="H3W1A1"
-                            />
-
-                    </LinearLayout>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

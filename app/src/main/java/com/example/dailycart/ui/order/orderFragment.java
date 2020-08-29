@@ -1,8 +1,6 @@
 package com.example.dailycart.ui.order;
-/**
- *
- * @author Kerin  Shah
- */
+
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dailycart.R;
+import com.example.dailycart.product_details;
 import com.example.dailycart.ui.shoppingcart.CartPojo;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -106,8 +105,18 @@ public class orderFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull final Orderview holder, int position, @NonNull final CartPojo model) {
                 holder.cartproductqty.setText(model.getQuantity());
+                final int quantity = Integer.parseInt(model.getQuantity());
                 final String idmain = getSnapshots().getSnapshot(position).getId();
                 final String id = model.getId();
+
+                holder.show_order_details.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent1 = new Intent(getActivity(), OrderDetailActivity.class);
+                        intent1.putExtra("id",idmain);
+                        startActivity(intent1);
+                    }
+                });
 
                 db.collection("products_master").document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
@@ -116,7 +125,10 @@ public class orderFragment extends Fragment {
                                 .load(String.valueOf(documentSnapshot.get("product_image")))
                                 .into(holder.cart_image);
                         System.out.println();
-                        holder.cartproductrate.setText(String.valueOf((documentSnapshot.get("product_rates"))));
+                        int price = Integer.parseInt(String.valueOf((documentSnapshot.get("product_rates"))));
+                        int Final = quantity*price;
+                        holder.cartproductrate.setText(String.valueOf(String.valueOf(Final)));
+                      //  holder.cartproductrate.setText(String.valueOf((documentSnapshot.get("product_rates"))));
                         holder.cartproductname.setText(String.valueOf((documentSnapshot.get("product_name"))));
 
                     }
