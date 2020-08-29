@@ -103,6 +103,7 @@ public class orderFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull final Orderview holder, int position, @NonNull final CartPojo model) {
                 holder.cartproductqty.setText(model.getQuantity());
+                final int quantity = Integer.parseInt(model.getQuantity());
                 final String idmain = getSnapshots().getSnapshot(position).getId();
                 final String id = model.getId();
 
@@ -113,7 +114,10 @@ public class orderFragment extends Fragment {
                                 .load(String.valueOf(documentSnapshot.get("product_image")))
                                 .into(holder.cart_image);
                         System.out.println();
-                        holder.cartproductrate.setText(String.valueOf((documentSnapshot.get("product_rates"))));
+                        int price = Integer.parseInt(String.valueOf((documentSnapshot.get("product_rates"))));
+                        int Final = quantity*price;
+                        holder.cartproductrate.setText(String.valueOf(String.valueOf(Final)));
+                      //  holder.cartproductrate.setText(String.valueOf((documentSnapshot.get("product_rates"))));
                         holder.cartproductname.setText(String.valueOf((documentSnapshot.get("product_name"))));
 
                     }

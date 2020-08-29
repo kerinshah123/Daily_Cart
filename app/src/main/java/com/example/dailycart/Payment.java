@@ -210,6 +210,7 @@ public class Payment extends AppCompatActivity {
                                 }
                             });
 
+                    Toast.makeText(Payment.this, "Payment Done", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), homeActivity.class);
                     startActivity(intent);
 
